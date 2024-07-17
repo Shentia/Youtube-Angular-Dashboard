@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIcon } from '@angular/material/icon';
-import { MatButton } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CustomSidenavComponent } from './components/custom-sidenav/custom-sidenav.component';
 
@@ -16,12 +16,15 @@ import { CustomSidenavComponent } from './components/custom-sidenav/custom-siden
     CommonModule,
     RouterOutlet,
     MatToolbarModule,
-    MatIcon,
-    MatButton,
+    MatIconModule,
+    MatButtonModule,
     MatSidenavModule,
     CustomSidenavComponent,
   ],
 })
 export class AppComponent {
-  title = 'ytDashboard';
+  title = 'ytdash';
+
+  collapsed = signal(false);
+  sidenavWidth = computed(() => (this.collapsed() ? '65px' : '250px'));
 }
